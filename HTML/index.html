@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index_style.css" />
-    <script src="../Scripts/bruteSearch.js"></script>
-    <script src="../Scripts/coinChange.js"></script>
     <title>Cracker</title>
 </head>
 <body>
@@ -21,7 +19,7 @@
 
     <div>
         <div id="header">
-            <h1>Conceptos basicos</h1>
+            <h1>Conceptos básicos</h1>
         </div>
 
         <div id="Content">
@@ -36,26 +34,30 @@
                 </tr>
                 <tr>
                     <td>Complejidad temporal</td>
-                    <td>Tiempo maximo que requiere un algoritmo de inicio a fin. Se puede medir en segundos o milisegundos y es representado como O(n)</td>
-                </tr>                
+                    <td>Tiempo que requiere un algoritmo de inicio a fin. Se puede medir en segundos o milisegundos</td>
+                </tr>
+                <tr>
+                    <td>Notacion O grande</td>
+                    <td>Complejidad temporal maxima, representada como O(n)</td>
+                </tr>              
             </table>
         </div>
     </div>
 
     <div>
         <div id="header">
-            <h1>Que es Fuerza Bruta?</h1>
+            <h1>¿Qué es Fuerza Bruta?</h1>
         </div>
 
         <div id="Content">
-            <p>La fuerza bruta (Brute Force) es el metodo más sencillo de implementar para diseñar algoritmos para solucionar problemas. Se baza en revisar cada posible opcion dentro de un problema hasta encontrar con la solucion.</p>
-            <p>Aunque es el metodo más facil de implementar, tambien es el menos efectivo, debido a que debe revisar elemento por elemento</p>
+            <p>La fuerza bruta (Brute Force) es el método más sencillo de implementar para diseñar algoritmos para solucionar problemas. Se basa en revisar cada posible opción dentro de un problema hasta encontrar con la solución.</p>
+            <p>Aunque es el método más fácil de implementar, también es el menos efectivo, debido a que debe revisar elemento por elemento, por lo que su complejidad tiende a ser lineal o exponencial. Debido a esto, la fuerza bruta solo es viable para problemas pequeños.</p>
         </div>
     </div>
     
     <div>
         <div id="header">
-            <h1>Resolver Problemas</h1>
+            <h1>Ejemplos de Problemas Resueltos Por Fuerza Bruta</h1>
         </div>
 
         <div id="Content">
@@ -66,13 +68,31 @@
 
                 <div>
                     <p>Conocido como Busqueda Bruta (Brute Search), este algoritmo recibe una cadena de caracteres, conocida como el Haystack, y una palabra, conocida como el Needle. El objetivo es encontrar la palabra dada dentro de la cadena.</p>
-                    <p>Como ya se mencionó, por medio de Fuerza Bruta se debe analizar posicion por posicion no solo el Haystack, pero tambien el Needle, lo que causa que este algoritmo tenga una complejidad de <span style="color: white;">O(n+m)</span>, donde n es el tamaño del Haystack y m el tamaño del Needle</p>
+                    <p>Como ya se mencionó, por medio de Fuerza Bruta se debe analizar posición por posición no solo el Haystack, pero también el Needle, lo que causa que este algoritmo tenga una complejidad de <span style="color: white;">O(n+m)</span>, donde n es el tamaño del Haystack y m el tamaño del Needle</p>
+                    <p>Este tipo de problemas aparecen en Data Mining, programas de procesamiento de texto y en el análisis de secuencias de ADN</p>
                 </div>
                 
                 <div id="video">
                     <iframe width="420" height="315"
                         src="https://www.youtube.com/embed/fCJBtVG2kQo">
                     </iframe> 
+                </div>
+
+                <div>
+                    <h4>Encontrar patron</h4>
+
+                    <form id="patternForm">
+                        <label for="haystack">Haystack</label>
+                        <input type="text" id="haystack">
+
+                        <label for="needle">Needle</label>
+                        <input type="text" id="needle"><br><br>
+
+                        <button type="submit">Buscar</button>
+                        <p id="ResultadoBusqueda"></p>
+                    </form>
+
+                    <div id="highlightedText"></div>
                 </div>
 
                 <div>
@@ -83,15 +103,46 @@
             </div>
             <div>
                 <div>
-                    <h3>Cambio de moneda</h3>
+                    <h3>Distancia más corta entre dos puntos</h3>
                 </div>
 
                 <div>
-                    <p></p>
+                    <p>Dado una lista de coordenadas en un plano, hallar los dos puntos con menor distancia entre sí.</p>
+                    <p>Por fuerza bruta, el algoritmo compara todos los puntos dados con todos, por lo que su complejidad es de <span style="color: white;">O(n²)</span> donde n es el número de puntos. Debido a esta complejidad, solo es viable para problemas con pocos puntos. Alternativas para problemas más grandes incluyen los algoritmos de Dijsktra y Bellman-Ford</p>
+                    <p>Escenarios donde se debe hallar la distancia mínima entre dos puntos incluyen casos de mapeo. Planeación de rutas y optimización de distancias y costos</p>
+                </div>
+
+                <div id="video">
+                    <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/aW9kZcJx64o">
+                    </iframe> 
+                </div>
+
+                <div>   
+                    <h4>Encontrar distancia más corta</h4>
+
+                    <form id="distanceForm">
+                        <label>Posicion 1 (x,y)</label>
+                        <input type="number" id="x1">
+                        <input type="number" id="y1"><br><br>
+
+                        <label>Posicion 2 (x,y)</label>
+                        <input type="number" id="x2">
+                        <input type="number" id="y2"><br><br>
+
+                        <label>Posicion 3 (x,y)</label>
+                        <input type="number" id="x3">
+                        <input type="number" id="y3"><br><br>
+
+                        <button type="submit">Encontrar</button>
+                        <p id="ResultadoPath"></p>
+                    </form>
+
+                    <canvas id="graphCanvas" width="400" height="400"></canvas>
                 </div>
 
                 <div>
-                    <a href="../Descargables/bruteSearch.py" download="bruteSearch.py">
+                    <a href="../Descargables/shortestPath.py" download="shortestPath.py">
                         Descargar ejemplo en Python
                     </a>
                 </div>
@@ -99,4 +150,14 @@
         </div>
     </div>
 </body>
+
+<footer>
+    <p>Pablo Enrique Quintero Callamand (<span style="color: lightblue;">p_quintero@javeriana.edu.co</span>) </p>
+    <p>Copyright &copy; 2025</p>
+    <p>Universidad Javeriana - Bogotá, Colombia</p>
+</footer>
+
+<script src="../Scripts/bruteSearch.js"></script>
+<script src="../Scripts/shortestPath.js"></script>
+
 </html>

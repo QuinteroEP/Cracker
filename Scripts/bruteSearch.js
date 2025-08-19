@@ -1,33 +1,48 @@
 function searchPattern(pattern, text) {
-    // Get the lengths of the pattern and the text
-    const m = pattern.length;
-    const n = text.length;
+      const m = pattern.length;
+      const n = text.length;
+      let results = [];
 
-    // Loop to slide pattern over text one by one
-    for (let i = 0; i <= n - m; i++) {
+      for (let i = 0; i <= n - m; i++) {
         let j = 0;
-
-        // Check for pattern match at current index
         while (j < m && text[i + j] === pattern[j]) {
-            j++;
+          j++;
         }
-
-        // If full pattern matched
         if (j === m) {
-            console.log(`Ocurrencia encontrada en ${i}`);
+          results.push(i);
         }
+      }
+
+      return results;
     }
-}
 
-// Example usage with prompt (Node.js)
-const readline = require("readline").createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+    document.getElementById("patternForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-readline.question("Ingrese el Haystack: ", text => {
-    readline.question("Ingrese el Needle: ", pattern => {
-        searchPattern(pattern, text);
-        readline.close();
+      const text = document.getElementById("haystack").value;
+      const pattern = document.getElementById("needle").value;
+
+      const matches = searchPattern(pattern, text);
+      const resultElement = document.getElementById("ResultadoBusqueda");
+      const highlightElement = document.getElementById("highlightedText");
+
+      if (matches.length > 0) {
+        resultElement.textContent = "Ocurrencias encontradas en índices: " + matches.join(", ");
+
+        // Build highlighted version of text
+        let highlighted = "";
+        let lastIndex = 0;
+
+        matches.forEach(index => {
+          highlighted += text.slice(lastIndex, index); // normal text
+          highlighted += `<span class="highlight">${text.slice(index, index + pattern.length)}</span>`;
+          lastIndex = index + pattern.length;
+        });
+        highlighted += text.slice(lastIndex);
+
+        highlightElement.innerHTML = highlighted;
+      } else {
+        resultElement.textContent = "No se encontraron ocurrencias";
+        highlightElement.textContent = text;
+      }
     });
-});
